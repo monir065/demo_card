@@ -1,0 +1,848 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =====================================
+   APP
+===================================== */
+
+.app {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #eee7df,
+      #d9d0c7
+    );
+}
+
+
+/* =====================================
+   FIXED OUTER FRAME
+===================================== */
+
+.frame {
+  position: relative;
+
+  width: 100%;
+  max-width: 500px;
+
+  height: 94vh;
+
+  background: #f7efe5;
+
+  border: 8px solid #5a4636;
+
+  box-shadow:
+    0 0 0 2px #c8a47c,
+    0 0 0 5px #ead8c2,
+    0 25px 70px rgba(50, 35, 20, 0.30);
+
+  overflow: hidden;
+}
+
+
+/* =====================================
+   INNER GOLD LINE
+===================================== */
+
+.frame::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 9px;
+
+  border: 1px solid #c6a178;
+
+  pointer-events: none;
+
+  z-index: 30;
+}
+
+
+/* =====================================
+   DECORATIVE CORNERS
+===================================== */
+
+.frame-corner {
+  position: absolute;
+
+  z-index: 40;
+
+  color: #b18b64;
+
+  font-size: 22px;
+
+  line-height: 1;
+}
+
+.top-left {
+  top: 14px;
+  left: 14px;
+}
+
+.top-right {
+  top: 14px;
+  right: 14px;
+}
+
+.bottom-left {
+  bottom: 78px;
+  left: 14px;
+}
+
+.bottom-right {
+  bottom: 78px;
+  right: 14px;
+}
+
+
+/* =====================================
+   BOOK
+===================================== */
+
+.book {
+  position: relative;
+
+  width: 100%;
+
+  height: calc(100% - 70px);
+
+  perspective: 1800px;
+
+  overflow: hidden;
+}
+
+
+/* =====================================
+   PAGE SHADOW
+===================================== */
+
+.page-shadow {
+  position: absolute;
+
+  inset: 18px;
+
+  background: rgba(70, 45, 25, 0.15);
+
+  filter: blur(18px);
+
+  transform: translateY(8px);
+
+  z-index: 0;
+}
+
+
+/* =====================================
+   PAGE
+===================================== */
+
+.page {
+  position: absolute;
+
+  inset: 12px;
+
+  z-index: 2;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 255, 255, 0.95),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #fffaf3,
+      #f4e7d8
+    );
+
+  border: 1px solid #d6b995;
+
+  box-shadow:
+    inset 0 0 35px rgba(120, 85, 50, 0.08),
+    5px 5px 20px rgba(70, 45, 25, 0.15);
+
+  transform-style: preserve-3d;
+
+  backface-visibility: hidden;
+}
+
+
+/* =====================================
+   PAGE TURN — NEXT
+===================================== */
+
+.turn-next {
+  transform-origin: left center;
+
+  animation: turnNext 0.85s cubic-bezier(
+    0.22,
+    0.61,
+    0.36,
+    1
+  );
+}
+
+@keyframes turnNext {
+
+  0% {
+    transform:
+      rotateY(-85deg)
+      translateX(-10px);
+
+    opacity: 0.5;
+  }
+
+  45% {
+    transform:
+      rotateY(-42deg)
+      translateX(-4px);
+
+    opacity: 0.85;
+  }
+
+  100% {
+    transform:
+      rotateY(0deg)
+      translateX(0);
+
+    opacity: 1;
+  }
+}
+
+
+/* =====================================
+   PAGE TURN — PREVIOUS
+===================================== */
+
+.turn-previous {
+  transform-origin: right center;
+
+  animation: turnPrevious 0.85s cubic-bezier(
+    0.22,
+    0.61,
+    0.36,
+    1
+  );
+}
+
+@keyframes turnPrevious {
+
+  0% {
+    transform:
+      rotateY(85deg)
+      translateX(10px);
+
+    opacity: 0.5;
+  }
+
+  45% {
+    transform:
+      rotateY(42deg)
+      translateX(4px);
+
+    opacity: 0.85;
+  }
+
+  100% {
+    transform:
+      rotateY(0deg)
+      translateX(0);
+
+    opacity: 1;
+  }
+}
+
+
+/* =====================================
+   PAGE CONTENT
+===================================== */
+
+.page-content {
+  width: 100%;
+  height: 100%;
+
+  padding: 50px 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =====================================
+   EYEBROW
+===================================== */
+
+.eyebrow {
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: #9b7651;
+
+  margin-bottom: 25px;
+}
+
+
+/* =====================================
+   COVER
+===================================== */
+
+.cover-page {
+  position: relative;
+}
+
+.top-ornament {
+  position: absolute;
+
+  top: 25px;
+
+  font-size: 22px;
+
+  color: #b28b61;
+}
+
+.bottom-ornament {
+  position: absolute;
+
+  bottom: 25px;
+
+  font-size: 28px;
+
+  color: #b28b61;
+}
+
+.rings {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border: 1px solid #c5a27d;
+
+  border-radius: 50%;
+
+  font-size: 34px;
+
+  color: #ad8256;
+
+  margin-bottom: 25px;
+
+  box-shadow:
+    0 0 0 6px rgba(190, 155, 115, 0.08);
+}
+
+.invited {
+  font-size: 16px;
+
+  font-style: italic;
+
+  color: #776455;
+
+  margin-bottom: 18px;
+}
+
+.cover-page h1 {
+  font-size: clamp(45px, 12vw, 64px);
+
+  font-weight: normal;
+
+  line-height: 1;
+
+  color: #4c3b2f;
+}
+
+.gold-divider {
+  width: 140px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 27px 0;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+
+  height: 1px;
+
+  flex: 1;
+
+  background: #cfb28e;
+}
+
+.gold-divider span {
+  color: #a77d51;
+
+  font-size: 20px;
+}
+
+.cover-date {
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  color: #705a48;
+}
+
+.cover-location {
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: #a18b76;
+
+  margin-top: 10px;
+}
+
+
+/* =====================================
+   COUPLE PAGE
+===================================== */
+
+.couple-page h2 {
+  font-size: 52px;
+
+  font-weight: normal;
+
+  line-height: 0.95;
+
+  color: #4c3b2f;
+}
+
+.photo-placeholder {
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  padding: 6px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid #c5a27d;
+
+  box-shadow:
+    0 0 0 5px #f4e7d8;
+}
+
+.photo-inner {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 30px;
+
+  color: #8e6a4c;
+
+  background:
+    radial-gradient(
+      circle,
+      #fffaf4,
+      #ead8c2
+    );
+}
+
+.photo-inner span {
+  font-size: 13px;
+
+  color: #a47b53;
+}
+
+.ampersand {
+  font-size: 27px;
+
+  font-style: italic;
+
+  color: #a47b53;
+
+  margin: 13px 0;
+}
+
+.love-text {
+  max-width: 290px;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+
+  color: #776455;
+}
+
+.family-text {
+  font-size: 12px;
+
+  font-style: italic;
+
+  color: #9a806a;
+}
+
+
+/* =====================================
+   EVENT PAGE
+===================================== */
+
+.event-page h2 {
+  max-width: 300px;
+
+  font-size: 36px;
+
+  font-weight: normal;
+
+  line-height: 1.15;
+
+  color: #4c3b2f;
+
+  margin-bottom: 18px;
+}
+
+.flower {
+  font-size: 38px;
+
+  color: #a47b53;
+
+  margin-bottom: 25px;
+}
+
+.event-list {
+  width: 100%;
+
+  max-width: 310px;
+}
+
+.event-item {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 14px;
+
+  border-top: 1px solid #d8c3aa;
+}
+
+.event-item:last-child {
+  border-bottom: 1px solid #d8c3aa;
+}
+
+.event-item span {
+  font-family: Arial, sans-serif;
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  color: #a27b55;
+
+  margin-bottom: 6px;
+}
+
+.event-item strong {
+  font-size: 14px;
+
+  font-weight: normal;
+
+  color: #5b493b;
+}
+
+.event-item small {
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  color: #98816b;
+
+  margin-top: 4px;
+}
+
+
+/* =====================================
+   LOCATION BUTTON
+===================================== */
+
+.location-btn {
+  margin-top: 25px;
+
+  border: 1px solid #9d7955;
+
+  background: #5b4738;
+
+  color: white;
+
+  padding: 12px 22px;
+
+  border-radius: 30px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.location-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(70, 45, 25, 0.2);
+}
+
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+.navigation {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+
+  height: 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 0 25px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 250, 244, 0.85),
+      #f7ede1
+    );
+
+  border-top: 1px solid #d2b899;
+
+  z-index: 50;
+}
+
+
+/* =====================================
+   NAV BUTTON
+===================================== */
+
+.nav-button {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  border: 1px solid #c1a17e;
+
+  background: transparent;
+
+  color: #5c4939;
+
+  font-size: 19px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.nav-button:hover:not(:disabled) {
+  background: #5c4939;
+
+  color: white;
+
+  transform: scale(1.05);
+}
+
+.nav-button:disabled {
+  opacity: 0.2;
+
+  cursor: default;
+}
+
+
+/* =====================================
+   PAGE INFO
+===================================== */
+
+.page-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.page-number,
+.page-total {
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  color: #9a8068;
+}
+
+.dots {
+  display: flex;
+
+  gap: 6px;
+
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #cbb49a;
+
+  transition: 0.3s;
+}
+
+.dot.active {
+  width: 17px;
+
+  border-radius: 10px;
+
+  background: #6b5140;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 500px) {
+
+  .app {
+    align-items: stretch;
+  }
+
+  .frame {
+    width: 100%;
+
+    height: 100vh;
+
+    border-width: 6px;
+
+    box-shadow:
+      0 0 0 2px #c8a47c;
+  }
+
+  .book {
+    height: calc(100% - 68px);
+  }
+
+  .page {
+    inset: 8px;
+  }
+
+  .page-content {
+    padding: 40px 20px;
+  }
+
+  .couple-page h2 {
+    font-size: 48px;
+  }
+
+  .event-page h2 {
+    font-size: 32px;
+  }
+
+  .navigation {
+    height: 68px;
+
+    padding: 0 18px;
+  }
+
+}
+
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 360px) {
+
+  .page-content {
+    padding: 30px 15px;
+  }
+
+  .cover-page h1 {
+    font-size: 43px;
+  }
+
+  .photo-placeholder {
+    width: 110px;
+    height: 110px;
+  }
+
+}
